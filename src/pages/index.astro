@@ -6,6 +6,55 @@ const site = {
     "ESO、Fallout 76、ARK ASA を中心に、攻略メモ・ビルド・素材情報・周回データなどを整理していく個人用ゲームハブです。",
 };
 
+const heroSlides = [
+  {
+    type: "video",
+    title: "Game Hub Main Visual",
+    subtitle: "攻略・データ・メモをまとめる総合ハブ",
+    description:
+      "サイト全体の世界観を見せるメインビジュアルです。ロゴや代表イメージを置く枠としてお使いいただけます。",
+    src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    poster:
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80",
+    alt: "ゲーム環境を思わせるサイトメインビジュアル動画",
+    href: "#featured",
+    cta: "おすすめページを見る",
+  },
+  {
+    type: "image",
+    title: "Elder Scrolls Online",
+    subtitle: "Build / Quest / Map",
+    description:
+      "ESO のビルドやクエスト、マップ整理ページへつながるイメージスライドです。",
+    src: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80",
+    alt: "ファンタジーRPGを想起させるゲームイメージ",
+    href: "/games/eso/",
+    cta: "ESO を見る",
+  },
+  {
+    type: "image",
+    title: "Fallout 76",
+    subtitle: "Weapon / Perk / Farm",
+    description:
+      "FO76 の武器、防具、周回メモなどを扱うページ用のイメージスライドです。",
+    src: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=1600&q=80",
+    alt: "SF系サバイバルゲームを想起させるイメージ",
+    href: "/games/fo76/",
+    cta: "FO76 を見る",
+  },
+  {
+    type: "image",
+    title: "ARK: Survival Ascended",
+    subtitle: "Breeding / Tame / Map",
+    description:
+      "ARK のブリーディング、テイム、マップ情報などへつながるイメージスライドです。",
+    src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1600&q=80",
+    alt: "自然と冒険を感じるサバイバルゲームイメージ",
+    href: "/games/ark/",
+    cta: "ARK を見る",
+  },
+];
+
 const navItems = [
   { label: "Games", href: "#games" },
   { label: "Updates", href: "#updates" },
@@ -17,7 +66,8 @@ const games = [
     key: "eso",
     badge: "Elder Scrolls Online",
     title: "ESO",
-    description: "ビルド、クエスト、素材、マップ、収集系の情報を整理する想定です。",
+    description:
+      "ビルド、クエスト、素材、マップ、収集系の情報を整理する想定です。",
     tags: ["Build", "Quest", "Map"],
     href: "/games/eso/",
   },
@@ -25,7 +75,8 @@ const games = [
     key: "fo76",
     badge: "Fallout 76",
     title: "FO76",
-    description: "武器、防具、パーク、イベント、周回メモなどをまとめる領域でございます。",
+    description:
+      "武器、防具、パーク、イベント、周回メモなどをまとめる領域でございます。",
     tags: ["Weapon", "Perk", "Farm"],
     href: "/games/fo76/",
   },
@@ -33,7 +84,8 @@ const games = [
     key: "ark",
     badge: "ARK: Survival Ascended",
     title: "ARK",
-    description: "ブリーディング、施設、マップ、テイム、サーバーメモなどを整理する想定です。",
+    description:
+      "ブリーディング、施設、マップ、テイム、サーバーメモなどを整理する想定です。",
     tags: ["Breeding", "Map", "Tame"],
     href: "/games/ark/",
   },
@@ -41,7 +93,8 @@ const games = [
     key: "future",
     badge: "Coming Soon",
     title: "追加予定",
-    description: "今後追加するゲームやシリーズの置き場です。FF14 や新作タイトルにも拡張しやすい構成にしてあります。",
+    description:
+      "今後追加するゲームやシリーズの置き場です。FF14 や新作タイトルにも拡張しやすい構成にしてあります。",
     tags: ["Future", "WIP"],
     href: "/games/",
   },
@@ -109,14 +162,14 @@ const featuredPages = [
           </div>
           <div class="brand-text">
             <p class="brand-title">{site.name}</p>
-            <p class="brand-subtitle">攻略・データ・メモを見やすく整理する個人ハブ</p>
+            <p class="brand-subtitle">
+              攻略・データ・メモを見やすく整理する個人ハブ
+            </p>
           </div>
         </a>
 
         <nav class="header-nav" aria-label="Main navigation">
-          {navItems.map((item) => (
-            <a href={item.href}>{item.label}</a>
-          ))}
+          {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
         </nav>
 
         <div class="lang-switch" aria-label="Language switcher">
@@ -127,44 +180,117 @@ const featuredPages = [
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <div class="hero-kicker">Game Database / Guide Hub</div>
-            <h1>{site.tagline}</h1>
-            <p>{site.description} すぐ探せて、あとで見返しやすい構成を目指したトップページです。</p>
+      <section class="hero hero-lp">
+        <div class="hero-slider hero-slider-full" aria-label="Hero slideshow">
+          {
+            heroSlides.map((slide, index) => (
+              <article
+                class={`hero-slide ${index === 0 ? "is-active" : ""}`}
+                aria-hidden={index === 0 ? "false" : "true"}
+                data-slide
+              >
+                {slide.type === "video" ? (
+                  <video
+                    class="hero-media"
+                    autoplay={index === 0}
+                    muted
+                    loop
+                    playsinline
+                    preload={index === 0 ? "auto" : "metadata"}
+                    poster={slide.poster}
+                    aria-label={slide.alt}
+                  >
+                    <source src={slide.src} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    class="hero-media"
+                    src={slide.src}
+                    alt={slide.alt}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                )}
+                <div class="hero-slide-overlay" />
+              </article>
+            ))
+          }
 
-            <div class="hero-actions">
-              <a class="button button-primary" href="#games">ゲーム一覧を見る</a>
-              <a class="button button-secondary" href="#updates">更新情報を見る</a>
-            </div>
+          <div class="container hero-overlay-content">
+            <div class="hero-copy hero-copy-lp">
+              <div class="hero-kicker">Game Database / Guide Hub</div>
+              <h1>{site.tagline}</h1>
+              <p class="hero-lead">
+                {site.description}
+                攻略、ビルド、素材、周回、サーバーメモまで、あとで探しやすい形で整えていくためのトップページです。
+              </p>
 
-            <div class="hero-points">
-              <div class="hero-point">
-                <strong>攻略を集約</strong>
-                <span>記事、ビルド、マップ、素材情報をゲームごとに整理</span>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#games">
+                  ゲーム一覧を見る
+                </a>
+                <a class="button button-secondary" href="#featured">
+                  おすすめページへ
+                </a>
               </div>
-              <div class="hero-point">
-                <strong>更新を追いやすい</strong>
-                <span>最近追加したページや更新履歴をトップから確認</span>
-              </div>
-              <div class="hero-point">
-                <strong>自分用にも公開用にも</strong>
-                <span>一般公開・限定公開の整理にもつなげやすい設計</span>
+
+              <div class="hero-points hero-points-lp">
+                <div class="hero-point">
+                  <strong>ゲームごとに整理</strong>
+                  <span>ESO / FO76 / ARK ASA を入口から分かりやすく分類</span>
+                </div>
+                <div class="hero-point">
+                  <strong>更新を追いやすい</strong>
+                  <span>追加した記事やメモをトップからすぐ確認できます</span>
+                </div>
+                <div class="hero-point">
+                  <strong>公開・限定公開にも対応しやすい</strong>
+                  <span>あとからページの見せ分けをしやすい素直な構成です</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="hero-visual">
-            <div class="visual-card" role="img" aria-label="ファンタジーとSFが混ざるゲーム情報サイトのイメージ">
-              <div class="visual-overlay">
-                <div class="visual-label">Main Visual</div>
-                <h2 class="visual-title">ロゴやキービジュアルを置く領域</h2>
-                <p class="visual-text">
-                  現在は仮のビジュアル領域です。後で SVG ロゴや各ゲームを象徴する画像へ差し替えやすい構成にしてあります。
-                </p>
-              </div>
-            </div>
+          <div
+            class="hero-slider-dots hero-slider-dots-lp"
+            aria-label="Hero slide indicators"
+          >
+            {
+              heroSlides.map((slide, index) => (
+                <button
+                  type="button"
+                  class={`hero-dot ${index === 0 ? "is-active" : ""}`}
+                  aria-label={`${slide.title} を表示`}
+                  aria-pressed={index === 0 ? "true" : "false"}
+                  data-dot={index}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="container hero-bottom-panels">
+          <div class="hero-mini-card">
+            <div class="meta">Main Contents</div>
+            <h2>攻略・データ・記録をひとつに集約</h2>
+            <p>
+              ゲームごとの攻略情報、素材情報、ビルド、メモ、周回記録を、
+              自分でも見返しやすく、必要なら公開もしやすい形で整理します。
+            </p>
+          </div>
+
+          <div class="hero-mini-grid">
+            <article class="hero-mini-item">
+              <strong>ESO</strong>
+              <span>Build / Quest / Map</span>
+            </article>
+            <article class="hero-mini-item">
+              <strong>FO76</strong>
+              <span>Weapon / Perk / Farm</span>
+            </article>
+            <article class="hero-mini-item">
+              <strong>ARK ASA</strong>
+              <span>Breeding / Tame / Map</span>
+            </article>
           </div>
         </div>
       </section>
@@ -179,26 +305,31 @@ const featuredPages = [
               </p>
             </div>
             <a class="section-link" href="#top">トップへ戻る</a>
+            <a href="/public/test">publicテストページ</a>
           </div>
 
           <div class="game-grid">
-            {games.map((game) => (
-              <article class="card game-card">
-                <div class={`game-thumb ${game.key}`}>
-                  <span class="game-badge">{game.badge}</span>
-                </div>
-                <div class="game-body">
-                  <h3 class="game-title">{game.title}</h3>
-                  <p class="game-description">{game.description}</p>
-                  <div class="tag-list">
-                    {game.tags.map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
+            {
+              games.map((game) => (
+                <article class="card game-card">
+                  <div class={`game-thumb ${game.key}`}>
+                    <span class="game-badge">{game.badge}</span>
                   </div>
-                  <a class="card-link" href={game.href}>詳細を見る →</a>
-                </div>
-              </article>
-            ))}
+                  <div class="game-body">
+                    <h3 class="game-title">{game.title}</h3>
+                    <p class="game-description">{game.description}</p>
+                    <div class="tag-list">
+                      {game.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                    <a class="card-link" href={game.href}>
+                      詳細を見る →
+                    </a>
+                  </div>
+                </article>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -215,13 +346,15 @@ const featuredPages = [
           </div>
 
           <div class="update-grid">
-            {updates.map((item) => (
-              <article class="card update-card">
-                <div class="meta">{item.date}</div>
-                <h3 class="update-title">{item.title}</h3>
-                <p class="update-text">{item.description}</p>
-              </article>
-            ))}
+            {
+              updates.map((item) => (
+                <article class="card update-card">
+                  <div class="meta">{item.date}</div>
+                  <h3 class="update-title">{item.title}</h3>
+                  <p class="update-text">{item.description}</p>
+                </article>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -238,14 +371,18 @@ const featuredPages = [
           </div>
 
           <div class="feature-grid">
-            {featuredPages.map((page) => (
-              <article class="card feature-card">
-                <div class="meta">{page.label}</div>
-                <h3 class="feature-title">{page.title}</h3>
-                <p class="feature-text">{page.description}</p>
-                <a class="card-link" href={page.href}>ページを見る →</a>
-              </article>
-            ))}
+            {
+              featuredPages.map((page) => (
+                <article class="card feature-card">
+                  <div class="meta">{page.label}</div>
+                  <h3 class="feature-title">{page.title}</h3>
+                  <p class="feature-text">{page.description}</p>
+                  <a class="card-link" href={page.href}>
+                    ページを見る →
+                  </a>
+                </article>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -261,12 +398,69 @@ const featuredPages = [
         </div>
 
         <div class="footer-links">
-          {navItems.map((item) => (
-            <a href={item.href}>{item.label}</a>
-          ))}
+          {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
         </div>
       </div>
     </footer>
+
+    <script is:inline>
+      const slides = Array.from(document.querySelectorAll("[data-slide]"));
+      const dots = Array.from(document.querySelectorAll("[data-dot]"));
+      const intervalMs = 5000;
+      let currentIndex = 0;
+      let timerId;
+
+      const controlVideo = (slide, isActive) => {
+        const video = slide.querySelector("video");
+        if (!video) return;
+
+        if (isActive) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      };
+
+      const setActiveSlide = (nextIndex) => {
+        slides.forEach((slide, index) => {
+          const isActive = index === nextIndex;
+          slide.classList.toggle("is-active", isActive);
+          slide.setAttribute("aria-hidden", String(!isActive));
+          controlVideo(slide, isActive);
+        });
+
+        dots.forEach((dot, index) => {
+          const isActive = index === nextIndex;
+          dot.classList.toggle("is-active", isActive);
+          dot.setAttribute("aria-pressed", String(isActive));
+        });
+
+        currentIndex = nextIndex;
+      };
+
+      const startSlider = () => {
+        clearInterval(timerId);
+        timerId = window.setInterval(() => {
+          const nextIndex = (currentIndex + 1) % slides.length;
+          setActiveSlide(nextIndex);
+        }, intervalMs);
+      };
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          setActiveSlide(index);
+          startSlider();
+        });
+      });
+
+      if (slides.length > 1) {
+        setActiveSlide(0);
+        startSlider();
+      } else if (slides.length === 1) {
+        setActiveSlide(0);
+      }
+    </script>
   </body>
 </html>
 
@@ -300,8 +494,16 @@ const featuredPages = [
     font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
     color: var(--text);
     background:
-      radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 26%),
-      radial-gradient(circle at top right, rgba(34, 197, 94, 0.14), transparent 22%),
+      radial-gradient(
+        circle at top left,
+        rgba(56, 189, 248, 0.16),
+        transparent 26%
+      ),
+      radial-gradient(
+        circle at top right,
+        rgba(34, 197, 94, 0.14),
+        transparent 22%
+      ),
       linear-gradient(180deg, #020617 0%, #0f172a 38%, #111827 100%);
     line-height: 1.7;
   }
@@ -344,7 +546,11 @@ const featuredPages = [
     width: 48px;
     height: 48px;
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(125, 211, 252, 0.22), rgba(59, 130, 246, 0.18));
+    background: linear-gradient(
+      135deg,
+      rgba(125, 211, 252, 0.22),
+      rgba(59, 130, 246, 0.18)
+    );
     border: 1px solid rgba(125, 211, 252, 0.28);
     display: grid;
     place-items: center;
@@ -406,32 +612,80 @@ const featuredPages = [
   }
 
   .lang-switch .is-active {
-    background: linear-gradient(135deg, rgba(125, 211, 252, 0.22), rgba(56, 189, 248, 0.18));
+    background: linear-gradient(
+      135deg,
+      rgba(125, 211, 252, 0.22),
+      rgba(56, 189, 248, 0.18)
+    );
     color: #ffffff;
     border: 1px solid rgba(125, 211, 252, 0.18);
   }
 
-  .hero {
-    padding: 72px 0 44px;
+  .hero-lp {
+    padding: 0 0 32px;
   }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 28px;
-    align-items: stretch;
+  .hero-slider-full {
+    position: relative;
+    min-height: clamp(560px, 78vh, 860px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    overflow: hidden;
+    background: #020617;
   }
 
-  .hero-copy,
-  .hero-visual {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
+  .hero-slider-full .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.9s ease;
   }
 
-  .hero-copy {
-    padding: 40px;
+  .hero-slider-full .hero-slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hero-slider-full .hero-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+  }
+
+  .hero-slider-full .hero-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(2, 6, 23, 0.88) 0%,
+        rgba(2, 6, 23, 0.62) 38%,
+        rgba(2, 6, 23, 0.38) 68%,
+        rgba(2, 6, 23, 0.52) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(2, 6, 23, 0.16) 0%,
+        rgba(2, 6, 23, 0.46) 100%
+      );
+  }
+
+  .hero-overlay-content {
+    position: relative;
+    z-index: 2;
+    min-height: clamp(560px, 78vh, 860px);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-copy-lp {
+    width: min(100%, 700px);
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
   }
 
   .hero-kicker {
@@ -447,18 +701,22 @@ const featuredPages = [
     margin-bottom: 18px;
   }
 
-  .hero h1 {
+  .hero-copy-lp h1 {
     margin: 0;
-    font-size: clamp(2.2rem, 4vw, 4.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    max-width: 11ch;
+    text-wrap: balance;
   }
 
-  .hero p {
-    margin: 18px 0 0;
-    color: #c8d7ea;
-    font-size: 1.03rem;
-    max-width: 60ch;
+  .hero-lead {
+    margin-top: 20px;
+    max-width: 42rem;
+    font-size: 1.05rem;
+    color: #d5e4f5;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   .hero-actions {
@@ -502,9 +760,13 @@ const featuredPages = [
 
   .hero-points {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
     margin-top: 26px;
+  }
+
+  .hero-points-lp {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 980px;
   }
 
   .hero-point {
@@ -512,6 +774,12 @@ const featuredPages = [
     border-radius: var(--radius-sm);
     background: rgba(2, 6, 23, 0.28);
     border: 1px solid rgba(148, 163, 184, 0.12);
+  }
+
+  .hero-points-lp .hero-point {
+    background: rgba(15, 23, 42, 0.46);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(148, 163, 184, 0.16);
   }
 
   .hero-point strong {
@@ -525,54 +793,89 @@ const featuredPages = [
     color: var(--muted);
   }
 
-  .hero-visual {
-    padding: 22px;
+  .hero-slider-dots-lp {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    z-index: 3;
     display: flex;
-    align-items: stretch;
+    gap: 10px;
   }
 
-  .visual-card {
-    width: 100%;
-    min-height: 100%;
-    border-radius: 20px;
-    border: 1px solid rgba(125, 211, 252, 0.16);
-    background:
-      linear-gradient(180deg, rgba(15, 23, 42, 0.1), rgba(2, 6, 23, 0.5)),
-      radial-gradient(circle at 30% 20%, rgba(125, 211, 252, 0.16), transparent 28%),
-      radial-gradient(circle at 80% 10%, rgba(74, 222, 128, 0.12), transparent 22%),
-      linear-gradient(135deg, #0f172a, #111827);
-    overflow: hidden;
+  .hero-dot {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.28);
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .hero-dot.is-active {
+    background: var(--accent);
+    transform: scale(1.12);
+  }
+
+  .hero-bottom-panels {
+    margin-top: 20px;
     position: relative;
+    z-index: 4;
     display: grid;
-    place-items: end start;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+  }
+
+  .hero-mini-card,
+  .hero-mini-grid {
+    background: rgba(15, 23, 42, 0.78);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    backdrop-filter: blur(14px);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-mini-card {
     padding: 26px;
   }
 
-  .visual-overlay {
-    max-width: 320px;
-    background: rgba(2, 6, 23, 0.56);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(148, 163, 184, 0.14);
-    border-radius: 18px;
-    padding: 18px;
+  .hero-mini-card h2 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    line-height: 1.4;
   }
 
-  .visual-label {
-    color: #7dd3fc;
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-  }
-
-  .visual-title {
+  .hero-mini-card p {
     margin: 0;
-    font-size: 1.35rem;
-    line-height: 1.3;
+    color: var(--muted);
   }
 
-  .visual-text {
-    margin: 10px 0 0;
-    color: #c7d8eb;
-    font-size: 0.94rem;
+  .hero-mini-grid {
+    padding: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .hero-mini-item {
+    padding: 18px 16px;
+    border-radius: 18px;
+    background: rgba(2, 6, 23, 0.34);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+  }
+
+  .hero-mini-item strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .hero-mini-item span {
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   .section {
@@ -585,6 +888,7 @@ const featuredPages = [
     justify-content: space-between;
     gap: 16px;
     margin-bottom: 18px;
+    flex-wrap: wrap;
   }
 
   .section-title {
@@ -639,24 +943,44 @@ const featuredPages = [
     padding: 18px;
     display: flex;
     align-items: end;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.12));
+    background: linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 0.18),
+      rgba(15, 23, 42, 0.12)
+    );
     border-bottom: 1px solid rgba(148, 163, 184, 0.14);
   }
 
   .game-thumb.eso {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(30, 41, 59, 0.24));
+    background: linear-gradient(
+      135deg,
+      rgba(245, 158, 11, 0.2),
+      rgba(30, 41, 59, 0.24)
+    );
   }
 
   .game-thumb.fo76 {
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(29, 78, 216, 0.22));
+    background: linear-gradient(
+      135deg,
+      rgba(251, 191, 36, 0.18),
+      rgba(29, 78, 216, 0.22)
+    );
   }
 
   .game-thumb.ark {
-    background: linear-gradient(135deg, rgba(74, 222, 128, 0.18), rgba(6, 78, 59, 0.24));
+    background: linear-gradient(
+      135deg,
+      rgba(74, 222, 128, 0.18),
+      rgba(6, 78, 59, 0.24)
+    );
   }
 
   .game-thumb.future {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.14), rgba(51, 65, 85, 0.3));
+    background: linear-gradient(
+      135deg,
+      rgba(148, 163, 184, 0.14),
+      rgba(51, 65, 85, 0.3)
+    );
   }
 
   .game-badge {
@@ -774,15 +1098,26 @@ const featuredPages = [
   }
 
   @media (max-width: 1080px) {
-    .hero-grid,
     .game-grid,
     .update-grid,
     .feature-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-    .hero-visual {
-      min-height: 320px;
+  @media (max-width: 980px) {
+    .hero-points-lp {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+    }
+
+    .hero-bottom-panels {
+      grid-template-columns: 1fr;
+      margin-top: -38px;
+    }
+
+    .hero-mini-grid {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -798,12 +1133,9 @@ const featuredPages = [
       justify-content: center;
     }
 
-    .hero-copy {
-      padding: 28px;
-    }
-
-    .hero-points {
-      grid-template-columns: 1fr;
+    .hero-copy-lp h1 {
+      max-width: 100%;
+      font-size: clamp(2rem, 8vw, 3.8rem);
     }
   }
 
@@ -812,11 +1144,16 @@ const featuredPages = [
       width: min(calc(100% - 24px), var(--max));
     }
 
-    .hero {
-      padding-top: 40px;
+    .hero-slider-full {
+      min-height: 620px;
     }
 
-    .hero-grid,
+    .hero-overlay-content {
+      min-height: 620px;
+      align-items: end;
+      padding-bottom: 90px;
+    }
+
     .game-grid,
     .update-grid,
     .feature-grid {
@@ -842,8 +1179,25 @@ const featuredPages = [
       font-size: 0.9rem;
     }
 
-    .hero h1 {
-      font-size: 2rem;
+    .hero-copy-lp h1 {
+      font-size: clamp(2.2rem, 10vw, 3.4rem);
+    }
+
+    .hero-lead {
+      font-size: 0.98rem;
+    }
+
+    .hero-slider-dots-lp {
+      right: 16px;
+      bottom: 16px;
+    }
+
+    .hero-bottom-panels {
+      margin-top: -24px;
+    }
+
+    .hero-mini-card {
+      padding: 22px;
     }
   }
 </style>
